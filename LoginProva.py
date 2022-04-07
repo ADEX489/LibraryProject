@@ -41,7 +41,7 @@ class LoginForm(QWidget):
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
-
+	a = 11
 	form = LoginForm()
 	form.show()
 
