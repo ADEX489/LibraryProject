@@ -10,7 +10,7 @@ def Biblioteca():
 
     Biblioteca = {}
 
-    BibliotecaP = pd.read_excel('C:\\Users\\ADEX_\\PycharmProjects\\pythonProject1\\FilesOperations\\a.xlsx')
+    BibliotecaP = pd.read_excel('FilesOperations\\a.xlsx')
     righe = BibliotecaP.shape[0]
     numero = 0
 
@@ -25,7 +25,7 @@ def BiblioP():
     cartella = os.getcwd()
     os.chdir(cartella)
 
-    BibliotecaP = pd.read_excel('C:\\Users\\ADEX_\\PycharmProjects\\pythonProject1\\FilesOperations\\a.xlsx')
+    BibliotecaP = pd.read_excel('FilesOperations\\a.xlsx')
 
     return BibliotecaP
 

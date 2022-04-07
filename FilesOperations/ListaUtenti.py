@@ -10,7 +10,7 @@ def Users():
 
     Users = {}
 
-    UsersP = pd.read_excel('C:\\Users\\ADEX_\\PycharmProjects\\pythonProject1\\FilesOperations\\a.xlsx', sheet_name='ListaUtenti')
+    UsersP = pd.read_excel('FilesOperations\\a.xlsx', sheet_name='ListaUtenti')
     righe = UsersP.shape[0]
     numero = 0
 
@@ -25,7 +25,7 @@ def UsersP():
     cartella = os.getcwd()
     os.chdir(cartella)
 
-    UsersP = pd.read_excel('C:\\Users\\ADEX_\\PycharmProjects\\pythonProject1\\FilesOperations\\a.xlsx')
+    UsersP = pd.read_excel('FilesOperations\\a.xlsx')
 
     return UsersP
 

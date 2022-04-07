@@ -82,7 +82,7 @@ def GetStato(codice, dizionario):
             return "si"
 
 def getPath():
-    return "C:\\Users\\ADEX_\\PycharmProjects\\pythonProject1\\FilesOperations\\a.xlsx"
+    return "FilesOperations\\a.xlsx"
 
 def add(idLibro, idUtente, idPrestito):
     wb = load_workbook(getPath())
