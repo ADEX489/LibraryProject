@@ -1,0 +1,6 @@
+TopoPrincipe        Antoine_de_Saint-Exupery	    Disney	    A100        si
+Il_meraviglioso_mago_di_Oz  Lyman_Frank_Baum	Lippocampo     A101         no
+Il_maialino_di_Natale	J.K.Rowling_Salani	   senza     A102   no
+PaperDante	Augusto_Macchetto	Disney	A103    no
+Lombra_e_il_suo_viaggio_fantastico	Laura_Zanchi	Tomolo	    A104 si
+Alla_ricerca_del_pet_Leggendario	Roby_Fabbri     senza   A105    si
