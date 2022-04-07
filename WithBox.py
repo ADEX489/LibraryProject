@@ -275,7 +275,7 @@ def Pagina(self, nome):
     self.setGeometry(300, 300, W, H)
     self.setMinimumSize(W, H)
 
-def main():
+def UserLog():
     app = QApplication(sys.argv)
     screen = app.primaryScreen()
     size = screen.size()
@@ -293,4 +293,4 @@ def main():
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
-    main()
+    UserLog()
