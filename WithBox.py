@@ -123,7 +123,7 @@ class LibriInPossesso(QWidget):
     def __init__(self):
         QWidget.__init__(self)
 
-        Pagina(self, "Libri in possesso")
+        Pagina(self, "Libri prestati")
 
         self.Label()
 
@@ -137,7 +137,7 @@ class LibriInPossesso(QWidget):
         self.label1 = QLabel(self)
         self.label1.move(int(W/20), int(H/30))
         self.label1.setFont(QtGui.QFont(Font, int(H/10)))
-        self.label1.setText("Libri in possesso")
+        self.label1.setText("Libri in prestito")
 
 
     def createTable(self):
@@ -225,7 +225,9 @@ class PrendereInPrestito(QWidget):
         self.msg.setText("Sicuro di voler prendere questo libro?")
         self.msg.setWindowTitle("")
         self.msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        add("te", CurrentUser, "fsd")
+        add("te", CurrentUser, "nuovo codice")
+
+
 class App(QWidget):
 
     def __init__(self):
@@ -245,7 +247,7 @@ class App(QWidget):
 
     def Buttons(self):
         self.Button1 = Button("Libri", self, int(W/2) - int(W/17), int(H/2) - int(H/6), self.show_Libri, 8, 12)
-        self.Button2 = Button("Libri in possesso", self, int(W/2) - int(W/17), int(H/2)-int(H/20), self.show_libriP, 8, 12)
+        self.Button2 = Button("Libri prestati", self, int(W/2) - int(W/17), int(H/2)-int(H/20), self.show_libriP, 8, 12)
         self.Button3 = Button("Restituire libro", self, int(W/4) - int(W/15), int(H*3/4) - int(H/7), self.show_libriR, 8 ,5)
         self.Button4 = Button("Prendere in prestito", self, int(W*3/4) - int(H/10), int(H*3/4) - int(H/7), self.show_PrendereInPrestito, 8, 5)
 
