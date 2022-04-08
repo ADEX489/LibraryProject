@@ -15,7 +15,7 @@ def Users():
     numero = 0
 
     while numero < righe:
-        Users[UsersP["ID"][numero]] = {"Nome": UsersP["NOME"][numero], "Cognome": UsersP["COGNOME"][numero], "Data Nascita": UsersP["DATA NASCITA"][numero]}
+        Users[UsersP["ID"][numero]] = {"Nome": UsersP["NOME"][numero], "Cognome": UsersP["COGNOME"][numero], "Stato": UsersP["STATO"][numero]}
         numero += 1
 
     return Users

@@ -188,12 +188,20 @@ class PrendereInPrestito(QWidget):
         QWidget.__init__(self)
 
         Pagina(self, "Prendere in prestito")
-
         self.Label()
 
-        self.Buttons()
+        self.CodiceLibro = QLineEdit(self)
+        self.CodiceLibro.move(int(W/10), int(H*2/5))
+        self.CodiceLibro.resize(int(W/3), int(H/20))
 
-        self.LineEdits()
+        self.indietro = Button("Indietro", self, int(W*3/4), int(H/22), self.Indietro, 7, 6)
+
+        self.prendo = QPushButton(self)
+        self.prendo.setText("prendere")
+        self.prendo.move(int(W/3), int(H*7/15))
+        self.prendo.resize(int(W / 10), int(H / 10))
+        self.prendo.setFont(QFont("Eras Demi ITC", (int(H / 60))))
+        self.prendo.clicked.connect(self.Prendo)
 
         self.showMaximized()
 
@@ -203,15 +211,6 @@ class PrendereInPrestito(QWidget):
         self.label.setFont(QtGui.QFont(Font, int(H/10)))
         self.label.setText("Prendere in prestito")
 
-    def LineEdits(self):
-        self.CodiceLibro = QLineEdit(self)
-        self.CodiceLibro.move(int(W/10), int(H*2/5))
-        self.CodiceLibro.resize(int(W/3), int(H/20))
-
-    def Buttons(self):
-        self.indietro = Button("Indietro", self, int(W*3/4), int(H/22), self.Indietro, 7, 6)
-        self.prendo = Button("prendere", self, int(W/3), int(H*7/15), self.Prendo, 10, 10)
-
     @pyqtSlot()
     def Indietro(self):
         self.app = App()
@@ -220,13 +219,30 @@ class PrendereInPrestito(QWidget):
 
     @pyqtSlot()
     def Prendo(self):
-        self.msg = QMessageBox(self)
-        self.msg.setIcon(QMessageBox.Question)
-        self.msg.setText("Sicuro di voler prendere questo libro?")
-        self.msg.setWindowTitle("")
-        self.msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        add("te", CurrentUser, "nuovo codice")
+        if self.CodiceLibro.text() in Libreria:
+            codice = self.CodiceLibro.text()
 
+            self.msg = QMessageBox()
+            self.msg.setText("Sicuro di voler prendere questo libro?")
+            self.msg.setWindowTitle("Domanda di controllo")
+            self.msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            ret = self.msg.exec();
+            if ret == QMessageBox.Yes:
+                add(codice, CurrentUser)
+                Esiste = QMessageBox()
+                Esiste.setIcon(QMessageBox.Information)
+                Esiste.setText("Preso con successo")
+                Esiste.setWindowTitle("Congratulazioni!")
+                Esiste.setStandardButtons(QMessageBox.Ok)
+                retval = Esiste.exec_()
+
+        else:
+            NonEsiste = QMessageBox()
+            NonEsiste.setIcon(QMessageBox.Warning)
+            NonEsiste.setText("Non ho trovato quel libro")
+            NonEsiste.setWindowTitle("Errore controllo libri")
+            NonEsiste.setStandardButtons(QMessageBox.Ok)
+            retval = NonEsiste.exec_()
 
 class App(QWidget):
 

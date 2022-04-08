@@ -84,7 +84,7 @@ def GetStato(codice, dizionario):
 def getPath():
     return "FilesOperations\\a.xlsx"
 
-def add(idLibro, idUtente, idPrestito):
+def add(idLibro, idUtente):
     wb = load_workbook(getPath())
     ws = wb['LibriInPossesso']
     a = LibriPossesso()
@@ -94,7 +94,7 @@ def add(idLibro, idUtente, idPrestito):
     ws.cell(column=2, row=leng + 2, value=idUtente)
     ws.cell(column=3, row=leng + 2, value=date.today().strftime('%Y-%m-%d'))
     ws.cell(column=4, row=leng + 2, value="")
-    ws.cell(column=5, row=leng + 2, value=idPrestito)
+    ws.cell(column=5, row=leng + 2, value=NuovoNumeroID())
     wb.save(getPath())
     wb.close()
 
@@ -125,3 +125,7 @@ def writeIntoFile(data):
     data = pd.DataFrame(data)
 
     data.to_excel(getPath(), sheet_name='LibriInPossesso')
+
+def NuovoNumeroID():
+    a = NumeroItems(LibriPossesso())
+    return a + 1
