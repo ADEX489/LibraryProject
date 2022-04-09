@@ -15,7 +15,7 @@ def Biblioteca():
     numero = 0
 
     while numero < righe:
-        Biblioteca[BibliotecaP["CODICE ID"][numero]] = {"Titolo": BibliotecaP["TITOLO"][numero], "Autore": BibliotecaP["AUTORE"][numero], "Casa Editrice": BibliotecaP["CASA EDITRICE"][numero], "Scuola": BibliotecaP["SCUOLA"][numero]}
+        Biblioteca[BibliotecaP["CODICE ID"][numero]] = {"Titolo": BibliotecaP["TITOLO"][numero], "Autore": BibliotecaP["AUTORE"][numero], "Casa Editrice": BibliotecaP["CASA EDITRICE"][numero], "Scuola": BibliotecaP["SCUOLA"][numero], "Anno": BibliotecaP["ANNO"][numero], "Materia": BibliotecaP["MATERIA"][numero], "Stato": BibliotecaP["STATO"][numero]}
         numero += 1
 
     return Biblioteca

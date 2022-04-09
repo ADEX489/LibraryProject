@@ -5,6 +5,9 @@ from openpyxl import Workbook, load_workbook
 from openpyxl.utils import get_column_letter
 from datetime import date
 
+def getPath():
+    return "a.xlsx"
+
 def LibriPossesso():
     #Aprire documento
     cartella = os.getcwd()
@@ -73,16 +76,19 @@ def CodiceXTitolo(codice, dizionario):
 
 def CodiceLXCodice(Codice, dizionario):
     for x in dizionario:
+        print(x)
         if dizionario[x]['ID Libro'] == Codice:
+            print(dizionario[x]['ID Utente'])
             return dizionario[x]['ID Utente']
 
 def GetStato(codice, dizionario):
     for indexX, item in dizionario.items():
         if item['ID Libro'] == codice:
+            return "no"
+        else:
             return "si"
 
-def getPath():
-    return "FilesOperations\\a.xlsx"
+
 
 def add(idLibro, idUtente):
     wb = load_workbook(getPath())
@@ -92,14 +98,13 @@ def add(idLibro, idUtente):
 
     ws.cell(column=1, row=leng + 2, value=idLibro)
     ws.cell(column=2, row=leng + 2, value=idUtente)
-    ws.cell(column=3, row=leng + 2, value=date.today().strftime('%Y-%m-%d'))
+    ws.cell(column=3, row=leng + 2, value=date.today().strftime('%d/%m/%Y'))
     ws.cell(column=4, row=leng + 2, value="")
     ws.cell(column=5, row=leng + 2, value=NuovoNumeroID())
     wb.save(getPath())
     wb.close()
 
 def DizionarioGirato(dizionario):
-    ListaGirata = {}
 
     colonne = getColumns(dizionario)
 
@@ -129,3 +134,44 @@ def writeIntoFile(data):
 def NuovoNumeroID():
     a = NumeroItems(LibriPossesso())
     return a + 1
+
+def NANxVOID(variabile):
+    if pd.isna(variabile):
+        return ""
+    else:
+        return variabile
+
+def AggDataRitorno(ID):
+
+    wb = load_workbook(getPath())
+    ws = wb['LibriInPossesso']
+
+    ws.cell(column=4, row=ID+1, value=date.today().strftime('%d/%m/%Y'))
+    wb.save(getPath())
+    wb.close()
+
+def CodiceinA(codice):
+    a = LibriPossesso()
+    if codice in a:
+        print(a[codice]["Data restituzione"])
+        if pd.isna(a[codice]["Data restituzione"]):
+            return 1
+        else:
+            return 0
+
+def PrestitiDiLibro(codice):
+    b = []
+    a = LibriPossesso()
+    for x, y in a.items():
+        if y["ID Libro"] == codice:
+            b.append(x)
+    return b
+
+def ControlloLibro(dizionario):
+    a = LibriPossesso()
+    for x in dizionario:
+        if pd.isna(a[x]["Data restituzione"]):
+            return a[x]["Data restituzione"]
+    return ""
+
+print(ControlloLibro(PrestitiDiLibro("A100")))
